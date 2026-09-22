@@ -80,6 +80,71 @@ body::after {
     padding: 0;
 }
 
+/* === Menú de Navegación (Navbar) === */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+}
+
+.navbar__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+
+.navbar__logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -.03em;
+    color: var(--color-primary-dark);
+    margin-bottom: .8rem;
+    text-shadow: 0 3px 0 rgba(255,255,255,.75);
+    text-decoration: none;
+
+}
+
+.navbar__menu {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.navbar__menu a {
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.navbar__menu a:hover {
+    color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+    .navbar__menu {
+        gap: 0.8rem;
+    }
+    .navbar__menu a {
+        font-size: 0.8rem;
+    }
+    .navbar__logo {
+        display: none; /* Oculta logo en móvil para dar espacio a los links */
+    }
+    .navbar__container {
+        justify-content: center;
+    }
+}
+
 .section {
     position: relative;
     padding: var(--spacing-xl) 0;
@@ -176,10 +241,10 @@ body::after {
     padding: clamp(2rem, 5vw, 3.8rem) clamp(1.25rem, 5vw, 3.5rem);
     border: 2px solid rgba(255,255,255,.82);
     border-radius: 44px 44px 58px 44px;
-    background: rgba(255, 252, 248, .82);
+    background: rgba(255, 252, 248, .30);
     box-shadow: 0 25px 70px rgba(75, 105, 92, .15);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     text-align: center;
 }
 
@@ -269,39 +334,42 @@ body::after {
     color: #B47C62;
 }
 
+/* Reemplaza tus clases actuales por estas */
 .hero__tags {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: .65rem;
+    align-items: center;
+    gap: 0.8rem;
 }
 
 .tag {
-    padding: .55rem 1rem;
-    border-radius: 999px;
-    font-size: .86rem;
-    font-weight: 800;
-    color: var(--color-text);
-    background: var(--white);
-    border: 2px solid rgba(141,191,168,.4);
-    box-shadow: 0 7px 18px rgba(73, 93, 82, .08);
+    background-color: transparent; /* Quitamos el fondo de botón */
+    color: var(--color-primary-dark);
+    padding: 0;
+    border-radius: 0;
+    font-size: 0.95rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Espaciado elegante */
 }
 
-.tag:nth-child(2) {
-    background: var(--color-secondary-soft);
-    border-color: transparent;
+/* Agrega el corazón automáticamente después de cada palabra (excepto la última) */
+.tag:not(:last-child)::after {
+    content: "♥"; /* Puedes cambiarlo por "•" o "|" si prefieres */
+    color: var(--color-secondary); /* Corazón en tono cálido */
+    margin-left: 0.8rem;
+    font-size: 0.9rem;
+    display: inline-block;
 }
 
-.tag:nth-child(3) {
-    background: var(--color-yellow-soft);
-    border-color: transparent;
+/* Ajuste para que se vea bien en el footer (fondo oscuro) */
+.tag--footer {
+    color: #FFFFFF;
 }
-
-.tag:nth-child(4) {
-    background: var(--color-lilac-soft);
-    border-color: transparent;
+.tag--footer:not(:last-child)::after {
+    color: var(--color-secondary);
 }
-
 .hero__decor {
     position: absolute;
     pointer-events: none;
@@ -592,7 +660,7 @@ body::after {
 }
 
 /* === Scroll reveal === */
-.reveal {
+/*.reveal {
     opacity: 0;
     transform: translateY(45px) scale(.985);
     transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1);
@@ -601,7 +669,7 @@ body::after {
 .reveal.active {
     opacity: 1;
     transform: translateY(0) scale(1);
-}
+}*/
 
 /* === Responsive polish === */
 @media (max-width: 767px) {
@@ -643,4 +711,17 @@ body::after {
         animation-iteration-count: 1 !important;
         transition-duration: .01ms !important;
     }
+}
+
+/* === Cabecera de páginas internas === */
+.page-header {
+    background-color: var(--color-primary-dark);
+    color: white;
+    padding: 6rem 0 3rem 0;
+    text-align: center;
+    margin-top: -60px; /* Compensa el padding-top del body */
+}
+.page-header h1 {
+    font-size: 2.5rem;
+    margin: 0;
 }
