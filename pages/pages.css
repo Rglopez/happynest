@@ -2,18 +2,64 @@
    PAGES.CSS - Estilos para páginas interiores
    ========================================= */
 
+
 /* === Cabecera principal de las páginas internas === */
 .page-header {
+    /* 1. Fondo base con degradado suave */
     background-color: var(--color-primary-dark);
+
+    /* 2. Motivo de puntitos (Polka dots) infantiles intercalados */
+    background-image: radial-gradient(rgba(255, 255, 255, 0.15) 3px, transparent 3px),
+                      radial-gradient(rgba(255, 255, 255, 0.1) 3px, transparent 3px);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+    
     color: white;
-    padding: 6rem 0 2rem 0;
+    padding: 9rem 0 2rem 0;
     text-align: center;
-    margin-top: 0px; /* Compensa el padding del body que usa el menú fijo */
+    
+    /* 3. Borde inferior grueso para un toque más alegre */
+    border-bottom: 3px solid var(--color-secondary);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
 .page-header h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     margin: 0;
+    position: relative;
+    display: inline-block;
+    padding: 0 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Da legibilidad sobre los puntos */
+}
+
+/* 4. Iconos decorativos (Corazones) a los lados del título */
+.page-header h1::before,
+.page-header h1::after {
+    content: "♥";
+    color: var(--color-accent); /* Usa el amarillo/dorado de la paleta */
+    position: absolute;
+    top: 50%;
+    font-size: 1.8rem;
+    opacity: 0.9;
+    /* Sombras para que el corazón resalte */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.15); 
+}
+
+.page-header h1::before {
+    left: -30px;
+    transform: translateY(-50%) rotate(-15deg); /* Leve inclinación juguetona */
+}
+
+.page-header h1::after {
+    right: -30px;
+    transform: translateY(-50%) rotate(15deg);
+}
+
+/* Ajuste para móviles: achicamos un poco la letra y los iconos */
+@media (max-width: 768px) {
+    .page-header h1 { font-size: 2rem; }
+    .page-header h1::before { left: -20px; font-size: 1.4rem; }
+    .page-header h1::after { right: -20px; font-size: 1.4rem; }
 }
 
 /* === Utilidades de Texto y Espaciado para Interiores === */
@@ -50,13 +96,13 @@
 }
 
 .icon-card {
-    background: var(--color-secondary-soft);
+    background: var(--white);
     padding: var(--spacing-md);
     margin: var(--spacing-md);
     border-radius: var(--border-radius);
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     border: none;
-    border-left: 4px solid var(--color-secondary);
+    border-left: 4px solid var(--color-secondary-soft);
     display: flex;
     align-items: center;
     justify-content: center;

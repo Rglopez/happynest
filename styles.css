@@ -176,7 +176,7 @@ body::after {
 }
 
 .text-white {
-    color: var(--white);
+    color: var(--white)!important;
 }
 
 .section-kicker,
@@ -348,7 +348,7 @@ body::after {
     color: var(--color-primary-dark);
     padding: 0;
     border-radius: 0;
-    font-size: 0.95rem;
+    font-size: 0.75rem;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px; /* Espaciado elegante */
@@ -358,7 +358,7 @@ body::after {
 .tag:not(:last-child)::after {
     content: "♥"; /* Puedes cambiarlo por "•" o "|" si prefieres */
     color: var(--color-secondary); /* Corazón en tono cálido */
-    margin-left: 0.8rem;
+    margin-left: 0.4rem;
     font-size: 0.9rem;
     display: inline-block;
 }
